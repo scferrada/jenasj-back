@@ -4,8 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.jena.datatypes.xsd.XSDDatatype;
-import org.apache.jena.graph.Node;
-import org.apache.jena.graph.NodeFactory;
 import org.apache.jena.query.Dataset;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryFactory;
@@ -27,8 +25,8 @@ public class JenaDAO {
 	private static Model model;
 	
 	static {
-		//dataset = TDBFactory.createDataset("C:\\Users\\scfer\\Documents\\Universidad\\Doctorado\\Jena\\wikidata");
-		//model = dataset.getDefaultModel();
+		dataset = TDBFactory.createDataset("C:\\Users\\scfer\\Documents\\Universidad\\Doctorado\\Jena\\wikidata");
+		model = dataset.getDefaultModel();
 	}
 	
 	static public List<Binding> executeSPARQL(String s){
@@ -40,6 +38,7 @@ public class JenaDAO {
     	while(qIter.hasNext()) {
     		result.add(qIter.nextBinding());
     	}
+    	System.out.println(result);
 		return result;
 	}
 
